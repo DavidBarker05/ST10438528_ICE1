@@ -19,6 +19,10 @@ class ST10438528_ICE1_API ACustomCharacter : public ACharacter {
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* PlayerCamera;
 
+	float NormalSpeed;
+
+	FTimerHandle SpeedBoostTimerHandle;
+
 	protected:
 		UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
 		UInputAction* JumpAction;
@@ -52,4 +56,9 @@ class ST10438528_ICE1_API ACustomCharacter : public ACharacter {
 
 		UFUNCTION(BlueprintCallable, Category = "Input")
 		virtual void DoJumpEnd();
+
+	public:
+		void ApplySpeedBoost(float SpeedMultiplier, float Duration);
+
+		void ResetSpeed();
 };

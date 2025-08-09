@@ -3,7 +3,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "EnhancedInputComponent.h"
 
-ACustomCharacter::ACustomCharacter() {
+ACustomCharacter::ACustomCharacter() : NormalSpeed(500.0f) {
 	GetCapsuleComponent()->InitCapsuleSize(35.0f, 90.0f);
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationYaw = false;
@@ -12,7 +12,7 @@ ACustomCharacter::ACustomCharacter() {
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 500.0f, 0.0f);
 	GetCharacterMovement()->JumpZVelocity = 500.f;
 	GetCharacterMovement()->AirControl = 0.35f;
-	GetCharacterMovement()->MaxWalkSpeed = 500.f;
+	GetCharacterMovement()->MaxWalkSpeed = NormalSpeed;
 	GetCharacterMovement()->MinAnalogWalkSpeed = 20.f;
 	GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 	GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
@@ -63,3 +63,10 @@ void ACustomCharacter::DoJumpStart() { Jump(); }
 
 void ACustomCharacter::DoJumpEnd() { StopJumping(); }
 
+void ACustomCharacter::ApplySpeedBoost(float SpeedMultiplier, float Duration) {
+	if (SpeedMultiplier < 1.0f || Duration <= 0.0f) return;
+	GetCharacterMovement()->MaxWalkSpeed = NormalSpeed * SpeedMultiplier;
+	GetWorldTimerManager().SetTimer(SpeedBoostTimerHandle, this, &ACustomCharacter::ResetSpeed, Duration, false);
+}
+
+void ACustomCharacter::ResetSpeed() { GetCharacterMovement()->MaxWalkSpeed = NormalSpeed; }
