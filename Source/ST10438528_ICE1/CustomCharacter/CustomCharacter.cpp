@@ -4,7 +4,7 @@
 #include "EnhancedInputComponent.h"
 
 ACustomCharacter::ACustomCharacter() {
-	GetCapsuleComponent()->InitCapsuleSize(42.0f, 90.0f);
+	GetCapsuleComponent()->InitCapsuleSize(35.0f, 90.0f);
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationYaw = false;
 	bUseControllerRotationRoll = false;
