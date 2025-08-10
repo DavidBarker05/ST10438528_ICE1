@@ -17,6 +17,10 @@ class ST10438528_ICE1_API APickup : public AActor {
 	public:
 		APickup();
 
+	public:
+		UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Spawning", meta = (AllowPrivateAccess = "true"))
+		class APickupSpawner* PickupSpawner;
+
 	protected:
 		UFUNCTION()
 		void OnComponentBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);

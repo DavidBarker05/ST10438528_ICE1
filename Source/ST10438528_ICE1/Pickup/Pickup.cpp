@@ -1,6 +1,7 @@
 #include "Pickup/Pickup.h"
 #include "Components/SphereComponent.h"
 #include "CustomCharacter/CustomCharacter.h"
+#include "Pickup/PickupSpawner.h"
 
 APickup::APickup() {
 	TriggerCollider = CreateDefaultSubobject<USphereComponent>(TEXT("TriggerCollider"));
@@ -14,7 +15,9 @@ APickup::APickup() {
 
 void APickup::OnComponentBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) {
 	if (ACustomCharacter* CustomCharacter = Cast<ACustomCharacter>(OtherActor)) {
-		CustomCharacter->ApplySpeedBoost(2.0f, 5.0f);
+		const float Duration = 5.0f;
+		CustomCharacter->ApplySpeedBoost(2.0f, Duration);
+		if (PickupSpawner) PickupSpawner->RespawnPickup(Duration);
 	}
 }
 
