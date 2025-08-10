@@ -17,6 +17,7 @@ void APickup::OnComponentBeginOverlap(UPrimitiveComponent* OverlappedComponent, 
 	if (ACustomCharacter* CustomCharacter = Cast<ACustomCharacter>(OtherActor)) {
 		const float Duration = 5.0f;
 		CustomCharacter->ApplySpeedBoost(2.0f, Duration);
+		GetWorld()->DestroyActor(this);
 		if (PickupSpawner) PickupSpawner->RespawnPickup(Duration);
 	}
 }
