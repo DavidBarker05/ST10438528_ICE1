@@ -2,8 +2,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Components/SphereComponent.h"
-#include "Components/StaticMeshComponent.h"
 #include "Pickup.generated.h"
 
 UCLASS()
@@ -11,7 +9,7 @@ class ST10438528_ICE1_API APickup : public AActor {
 	GENERATED_BODY()
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Collision", meta = (AllowPrivateAccess = "true"))
-	USphereComponent* TriggerCollider;
+	class USphereComponent* TriggerCollider;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Visual", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* PickupMesh;

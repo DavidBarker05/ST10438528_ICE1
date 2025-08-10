@@ -1,7 +1,11 @@
 #include "CustomCharacter/CustomCharacter.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "GameFramework/SpringArmComponent.h"
+#include "Camera/CameraComponent.h"
+#include "Components/InputComponent.h"
 #include "EnhancedInputComponent.h"
+#include "InputActionValue.h"
 
 ACustomCharacter::ACustomCharacter() : NormalSpeed(500.0f) {
 	GetCapsuleComponent()->InitCapsuleSize(35.0f, 90.0f);

@@ -1,4 +1,5 @@
 #include "Pickup/Pickup.h"
+#include "Components/SphereComponent.h"
 #include "CustomCharacter/CustomCharacter.h"
 
 APickup::APickup() {
