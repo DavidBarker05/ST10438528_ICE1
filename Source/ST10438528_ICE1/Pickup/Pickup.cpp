@@ -11,6 +11,7 @@ APickup::APickup() {
 	TriggerCollider->OnComponentBeginOverlap.AddDynamic(this, &APickup::OnComponentBeginOverlap);
 	PickupMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("PickupMesh"));
 	PickupMesh->SetupAttachment(RootComponent);
+	PickupMesh->SetCollisionProfileName("NoCollision");
 }
 
 void APickup::OnComponentBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) {
