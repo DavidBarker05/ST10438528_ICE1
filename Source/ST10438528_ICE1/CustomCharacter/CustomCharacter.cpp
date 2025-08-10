@@ -49,7 +49,7 @@ void ACustomCharacter::Look(const FInputActionValue& Value) {
 	DoLook(LookAxisVector.X, LookAxisVector.Y);
 }
 
-void ACustomCharacter::DoMove(float InputX, float InputY) {
+void ACustomCharacter::DoMove(const float InputX, const float InputY) {
 	if (GetController() == nullptr) return;
 	const FRotator YawRotation(0, GetController()->GetControlRotation().Yaw, 0);
 	const FRotationMatrix YawRotationMatrix(YawRotation);
@@ -57,7 +57,7 @@ void ACustomCharacter::DoMove(float InputX, float InputY) {
 	AddMovementInput(YawRotationMatrix.GetUnitAxis(EAxis::Y), InputX);
 }
 
-void ACustomCharacter::DoLook(float Yaw, float Pitch) {
+void ACustomCharacter::DoLook(const float Yaw, const float Pitch) {
 	if (GetController() == nullptr) return;
 	AddControllerYawInput(Yaw);
 	AddControllerPitchInput(Pitch);
@@ -67,7 +67,7 @@ void ACustomCharacter::DoJumpStart() { Jump(); }
 
 void ACustomCharacter::DoJumpEnd() { StopJumping(); }
 
-void ACustomCharacter::ApplySpeedBoost(float SpeedMultiplier, float Duration) {
+void ACustomCharacter::ApplySpeedBoost(const float SpeedMultiplier, const float Duration) {
 	if (SpeedMultiplier < 1.0f || Duration <= 0.0f) return;
 	GetCharacterMovement()->MaxWalkSpeed = NormalSpeed * SpeedMultiplier;
 	GetWorldTimerManager().SetTimer(SpeedBoostTimerHandle, this, &ACustomCharacter::ResetSpeed, Duration, false);

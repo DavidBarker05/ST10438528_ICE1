@@ -41,10 +41,10 @@ class ST10438528_ICE1_API ACustomCharacter : public ACharacter {
 
 	public:
 		UFUNCTION(BlueprintCallable, Category = "Input")
-		virtual void DoMove(float InputX, float InputY);
+		virtual void DoMove(const float InputX, const float InputY);
 
 		UFUNCTION(BlueprintCallable, Category = "Input")
-		virtual void DoLook(float Yaw, float Pitch);
+		virtual void DoLook(const float Yaw, const float Pitch);
 
 		UFUNCTION(BlueprintCallable, Category = "Input")
 		virtual void DoJumpStart();
@@ -53,7 +53,7 @@ class ST10438528_ICE1_API ACustomCharacter : public ACharacter {
 		virtual void DoJumpEnd();
 
 	public:
-		void ApplySpeedBoost(float SpeedMultiplier, float Duration);
+		void ApplySpeedBoost(const float SpeedMultiplier, const float Duration);
 
 		void ResetSpeed();
 };
