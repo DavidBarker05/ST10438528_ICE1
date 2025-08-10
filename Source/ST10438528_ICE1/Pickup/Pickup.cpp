@@ -13,6 +13,8 @@ APickup::APickup() {
 }
 
 void APickup::OnComponentBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) {
-	if (ACustomCharacter* CustomCharacter = Cast<ACustomCharacter>(OtherActor)) CustomCharacter->ApplySpeedBoost(2.0f, 5.0f);
+	if (ACustomCharacter* CustomCharacter = Cast<ACustomCharacter>(OtherActor)) {
+		CustomCharacter->ApplySpeedBoost(2.0f, 5.0f);
+	}
 }
 
